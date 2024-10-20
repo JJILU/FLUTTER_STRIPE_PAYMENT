@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:striperpayers/services/stripe_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,15 +17,18 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Stripe Payment"),
         centerTitle: true,
       ),
-      body: Center(
-        child: ElevatedButton(onPressed: () {
-
-        },
-        child: const Text(
-          "Purchase"
-        ),
-        ),
-      ),
+      body:SizedBox.expand(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            MaterialButton(onPressed: () {
+              StripeService.instance.makePayment();
+            },
+            child: const Text("Purchsase"),
+            ),
+          ],),
+      )
     );
   }
 }
